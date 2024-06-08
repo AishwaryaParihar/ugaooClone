@@ -14,9 +14,16 @@ import SummaryApi from "./common/Index";
 import Context from "./context";
 import { useDispatch } from "react-redux";
 import { setUserDetails } from "./store/userSlice";
+import Adminpanel from "./components/screens/Adminpanel";
+import AllUsers from "./components/screens/adminScreens/AllUsers";
+import UserProvider from "./components/providers/user-provider";
+// import Product from "./components/screens/adminScreens/Products";
+import Products from "./components/screens/adminScreens/Products";
+import Settings from "./components/screens/adminScreens/Settings"
+import ActivityLog from "./components/screens/adminScreens/ActivityLog";
 
 function App() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const fetchUserDetails = async () => {
     const dataResponse = await fetch(SummaryApi.current_user.url, {
       method: SummaryApi.current_user.method,
@@ -24,9 +31,9 @@ function App() {
     });
 
     const dataApi = await dataResponse.json();
-    
-    if(dataApi.success){
-      dispatch(setUserDetails(dataApi.data))
+
+    if (dataApi.success) {
+      dispatch(setUserDetails(dataApi.data));
     }
 
     console.log("data-user", dataResponse);
@@ -37,26 +44,36 @@ function App() {
   }, []);
   return (
     <>
-      <Context.Provider value={{
-        fetchUserDetails   //user detail fetch
-      }}>
+      <Context.Provider
+        value={{
+          fetchUserDetails, //user detail fetch
+        }}
+      >
         <ToastContainer />
 
-        <header>
+        {/* <header>
           <Nav />
-        </header>
+        </header> */}
 
         <main>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/seeds" element={<SeedsHero />} />
-            <Route path="/signin" element={<SignIn />} />
-            <Route path="/signup" element={<SignUp />} />
+            <Route path="/" element={<UserProvider />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/seeds" element={<SeedsHero />} />
+              <Route path="/signin" element={<SignIn />} />
+              <Route path="/signup" element={<SignUp />} />
+            </Route>
+            <Route path="/admin-panel" element={<Adminpanel />}>
+              <Route  path="alluser" element={<AllUsers />}></Route>
+              <Route path="products" element={<Products />}></Route>
+              <Route path="settings" element={<Settings />}></Route>
+              <Route path="activitylog" element={<ActivityLog />}></Route>
+            </Route>
           </Routes>
         </main>
-        <footer>
+        {/* <footer>
           <Footer />
-        </footer>
+        </footer> */}
       </Context.Provider>
     </>
   );

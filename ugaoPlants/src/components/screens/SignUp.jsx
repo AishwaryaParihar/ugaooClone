@@ -8,9 +8,9 @@ function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [data, setData] = useState({
+    name: "",
     email: "",
     password: "",
-    name: "",
     confirmPassword: "",
   })
   const navigate = useNavigate()

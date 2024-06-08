@@ -125,3 +125,23 @@
   transform: scaleX(1);
   transform-origin: bottom left;
 }
+
+.group .popUPtext {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+.group:hover .popUPtext {
+  display: block;
+
+}
