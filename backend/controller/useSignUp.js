@@ -4,9 +4,9 @@ const bcrypt = require("bcrypt");
 async function userSignUpController(req, res) {
   try {
     console.log(req.body);
-    const { email, password } = req.body;
+    const {name, email, password } = req.body;
 
-    console.log({email, password})
+    console.log({ name,email, password})
 
     const user = await userModel.findOne({ email });
 
