@@ -78,11 +78,11 @@ function Bestseller() {
                     <p className="text-success h6">
                       {" "}
                       <del className="text-secondary">
-                        <i class="fa-solid fa-indian-rupee-sign point12px"> </i>{" "}
+                        <i className="fa-solid fa-indian-rupee-sign point12px"> </i>{" "}
                         {product.delprice}
                       </del>{" "}
                       From{" "}
-                      <i class="fa-solid fa-indian-rupee-sign point12px"> </i>{" "}
+                      <i className="fa-solid fa-indian-rupee-sign point12px"> </i>{" "}
                       {product.price}
                     </p>
                     <Button className="w-100 btn btn-success rounded-0 text-uppercase">

@@ -18,7 +18,7 @@ const Adminpanel = () => {
         </Link>
         <hr />
         <div className="ps-3 mt-5">
-          <i class="fa-regular fa-user text-success py-2 px-3 h3  border border-success rounded-circle"></i>
+          <i className="fa-regular fa-user text-success py-2 px-3 h3  border border-success rounded-circle"></i>
           <p className="text-uppercase h4">{user?.name}</p>
           <p>{user?.role}</p>
         </div>

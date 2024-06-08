@@ -57,7 +57,7 @@ function Nav() {
                     className="border-0 bg-transparent"
                     onClick={handleLogout}
                   >
-                    <i class="fa-solid  fa-circle-left fa-lg pt-3 px-2  text-success border-0"></i>
+                    <i className="fa-solid  fa-circle-left fa-lg pt-3 px-2  text-success border-0"></i>
                   </button>
                 ) : (
                   <Link to="/signin">
@@ -68,7 +68,7 @@ function Nav() {
               </span>
               <i className="fa-solid fa-cart-shopping p-3 text-success"></i>
               <Link>
-                <i class="fa-regular fa-user text-success pt-3 px-2"></i>
+                <i className="fa-regular fa-user text-success pt-3 px-2"></i>
               </Link>
             </div>
             <div
@@ -233,7 +233,7 @@ function Nav() {
                         className="border-0 bg-transparent"
                         onClick={handleLogout}
                       >
-                        <i class="fa-solid  fa-circle-left fa-lg pt-3 px-2  text-success border-0"></i>
+                        <i className="fa-solid  fa-circle-left fa-lg pt-3 px-2  text-success border-0"></i>
                       </button>
                     ) : (
                       <Link to="/signin">
@@ -254,7 +254,7 @@ function Nav() {
                         setMenuDisplay(preve => !preve)
                      }}>
                      <Link>
-                      <i class="fa-regular fa-user text-success pt-3 px-2"></i>
+                      <i className="fa-regular fa-user text-success pt-3 px-2"></i>
                     </Link>
                      </span>
                     {

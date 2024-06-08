@@ -111,9 +111,9 @@ function SignUp() {
                 >
                   <span>
                     {showPassword ? (
-                      <i class="fa-solid fa-eye-slash"></i>
+                      <i className="fa-solid fa-eye-slash"></i>
                     ) : (
-                      <i class="fa-regular fa-eye"></i>
+                      <i className="fa-regular fa-eye"></i>
                     )}
                   </span>
                 </div>
@@ -143,9 +143,9 @@ function SignUp() {
                 >
                   <span>
                     {showConfirmPassword ? (
-                      <i class="fa-solid fa-eye-slash"></i>
+                      <i className="fa-solid fa-eye-slash"></i>
                     ) : (
-                      <i class="fa-regular fa-eye"></i>
+                      <i className="fa-regular fa-eye"></i>
                     )}
                   </span>
                 </div>
