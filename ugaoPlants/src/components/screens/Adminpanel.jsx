@@ -4,7 +4,7 @@ import { Link, Outlet } from "react-router-dom";
 const Adminpanel = () => {
   const user = useSelector((state) => state?.user?.user);
   return (
-    <div className="container-fluid">
+    <div className="container-fluid shadow-lg">
       <div className="row">
       <div
         className="d-flex flex-column flex-shrink-0 p-3 col-2 bgNav"

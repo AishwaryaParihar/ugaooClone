@@ -177,3 +177,19 @@
   text-decoration-color: #000000;
   text-decoration-thickness: 1px;
 }
+
+
+/* user table */
+.userTable{
+  background-color: rgb(255, 255, 255);
+  box-shadow: .1px .1px 12px rgb(193, 191, 191);
+}
+.userTable th{
+  /* border: 0.1px solid rgb(189, 189, 189); */
+  font-size: 19px;
+  font-weight: 500;
+}
+.userTable td{
+  
+ padding: 12px 8px;
+}

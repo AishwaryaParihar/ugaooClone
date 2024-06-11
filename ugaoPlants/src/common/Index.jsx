@@ -1,3 +1,4 @@
+
 const backendDomin = "http://localhost:8081";
 
 const SummaryApi = {
@@ -20,6 +21,10 @@ const SummaryApi = {
   allUser : {
     url : `${backendDomin}/api/all-user`,
     method : "get"
+  },
+  updateUser : {
+    url : `${backendDomin}/api/update-user`,
+    method : "post"
   }
 };
 

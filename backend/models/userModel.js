@@ -12,7 +12,7 @@ const userSchema = new mongoose.Schema(
     role : String,
   },
   {
-    timestamp: true,
+    timestamps: true,
   }
 )
 const userModel = mongoose.model("user", userSchema)
