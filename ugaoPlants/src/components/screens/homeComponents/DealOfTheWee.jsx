@@ -178,7 +178,7 @@ function DealOfTheWeek() {
               )}
             </div>
             <div className="buy-product">
-              <div className="count-product mb-3">
+              <div className="count-product my-3 ">
                 <button
                   className="btn minus border-0"
                   onClick={() => {

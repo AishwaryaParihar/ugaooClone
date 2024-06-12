@@ -45,9 +45,10 @@ function SignUp() {
       if(dataApi.error){
         toast.error(dataApi.message);
       }
-      console.log("data", dataApi);
+
     } else {
-      console.log("please check the password and confirm password");
+    
+      toast.error("please check the password and confirm password");
     }
   };
 

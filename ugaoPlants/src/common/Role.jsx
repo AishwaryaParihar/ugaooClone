@@ -1,5 +1,5 @@
 const ROLE = {
-    ADMI : "ADMIN",
+    ADMIN : "ADMIN",
     GENERAL : "GENERAL"
 }
 

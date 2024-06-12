@@ -20,6 +20,9 @@
   text-decoration: none;
   color: black;
 }
+.pointerClass{
+  cursor: pointer;
+}
 .imgHero {
   height: 45vh;
   width: 100%;
@@ -193,3 +196,4 @@
   
  padding: 12px 8px;
 }
+/* admin  */

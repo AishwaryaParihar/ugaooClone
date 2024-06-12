@@ -6,14 +6,13 @@ import { useDispatch, useSelector } from "react-redux"; // for backend
 import SummaryApi from "../../common/Index";
 import { toast } from "react-toastify";
 import { setUserDetails } from "../../store/userSlice";
+import ROLE from "../../common/Role";
 
 function Nav() {
   // for backend
   const user = useSelector((state) => state?.user?.user);
   const dispatch = useDispatch();
   const [menuDisplay, setMenuDisplay] = useState(false);
-
- 
 
   const handleLogout = async () => {
     const fetchData = await fetch(SummaryApi.logout_user.url, {
@@ -250,31 +249,35 @@ function Nav() {
                   </Link>
 
                   <span className="position-relative group">
-                     <span onClick={ ()=>{
-                        setMenuDisplay(preve => !preve)
-                     }}>
-                     <Link>
-                      <i className="fa-regular fa-user text-success pt-3 px-2"></i>
-                    </Link>
-                     </span>
-                    {
-                       menuDisplay && (
+                    {user?._id && (
+                      <span
+                        onClick={() => {
+                          setMenuDisplay((preve) => !preve);
+                        }}
+                      >
+                        <Link>
+                          <i className="fa-regular fa-user text-success pt-3 px-2"></i>
+                        </Link>
+                      </span> 
+                    )}
 
-                    <span className="popUPtext">
-                      <Link
-                        // to={"admin-panel"}
-                        to="/admin-panel"
-                        className="text-decoration-none text-dark " onClick={ ()=>{
-                          setMenuDisplay(preve => !preve)
-                       }}>
-                        {" "}
-                        Admin Panel
-                      </Link>
-                    </span>
-                       )
-                    }
+                    {menuDisplay && (
+                      <span className="popUPtext">
+                        {user?.role === ROLE.ADMIN && (
+                          <Link
 
-                   
+                            to="/admin-panel/products"
+                            className="text-decoration-none text-dark "
+                            onClick={() => {
+                              setMenuDisplay((preve) => !preve);
+                            }}
+                          >
+                            {" "}
+                            Admin Panel
+                          </Link>
+                        )}
+                      </span>
+                    )}
                   </span>
                 </div>
               </div>

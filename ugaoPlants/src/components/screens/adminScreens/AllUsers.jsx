@@ -6,6 +6,13 @@ import ChangeUserRole from './ChangeUserRole'
 const AllUsers = () => {
 
   const [allUser, setAllUsers] = useState([])
+  const [openUpdateRole, setOpenUpdateRole] = useState(false)
+  const [updateUserDetails, setUpdateUserDetails] = useState({
+    email : "",
+    name : "",
+    role : "",
+    _id: ""
+  })
 
   console.log(allUser)
 
@@ -57,7 +64,12 @@ const AllUsers = () => {
                 <td>{el?.role}</td>
                 <td>{moment(el?.createdAt).format('LL')}</td>
                 <td>
-                  <button className='border-0 bg-transparent'>
+                  <button className='border-0 bg-transparent'
+                   onClick={()=> 
+                   {
+                    setUpdateUserDetails(el)
+               
+                   setOpenUpdateRole(true)}    }>
                   <i class="fa-regular fa-pen-to-square p-2 text-success"></i>
               
                   </button>
@@ -69,8 +81,20 @@ const AllUsers = () => {
       </tbody>
     </table>
 
-   <ChangeUserRole />
+    {
+      openUpdateRole && (
+        <ChangeUserRole onClose={()=> setOpenUpdateRole(false)} 
+        name={updateUserDetails.name} 
+        email={updateUserDetails.email} 
+        role={updateUserDetails.role} 
+        userId={updateUserDetails._id}
+        callFunc={fetchAllUsers}
+        />
 
+      )
+    }
+
+ 
   </div>
     </>
   )

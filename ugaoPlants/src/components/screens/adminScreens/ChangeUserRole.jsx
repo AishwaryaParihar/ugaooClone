@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import ROLE from "../../../common/Role";
 import SummaryApi from "../../../common/Index";
+import { toast } from "react-toastify";
 
 const ChangeUserRole = ({
   name,
   email,
   role,
+  userId,
   onClose,
+  callFunc,
 }) => {
 
   const [userRole,setUserRole] = useState(role)
@@ -24,17 +27,24 @@ const ChangeUserRole = ({
         "content-type" : "application/json"
       },
       body : JSON.stringify({
+        userId : userId,
         role : userRole
       })
     })
 
     const responseData = await fetchResponse.json()
 
+    if(responseData.success){
+      toast.success(responseData.message)
+      onClose()
+      callFunc()
+    }
+
     console.log("role updated",responseData)
   }
 
   return (
-    <div className="position-absolute  z-10 d-flex justify-content-center ">
+    <div className="position-absolute  z-10 d-flex justify-content-center bg-danger ">
       <div className="bg-white  shadow-lg px-5 py-2">
 
       <div className="text-end">
