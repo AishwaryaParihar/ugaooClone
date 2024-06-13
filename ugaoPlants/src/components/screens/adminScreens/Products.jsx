@@ -38,7 +38,7 @@ function Products() {
       </div>
 
 
-      <div className="d-flex gap-3 align-items-center mt-4">
+      <div className="d-flex gap-3 align-items-center  flex-wrap all-product-box">
         {
           allProduct.map((product,index)=> {
             return(
@@ -54,7 +54,7 @@ function Products() {
 
       {/* upload product component */}
       {openUploadProduct && (
-        <UploadProduct onClose={() => setOpenUploadProduct(false)}  />
+        <UploadProduct onClose={() => setOpenUploadProduct(false)}  fetchData={fetchAllProduct}/>
       )}
     </>
   );

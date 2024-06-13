@@ -51,3 +51,8 @@
     /* width: fit-content; */
     margin: 0px auto;
   }
+
+  .all-product-box{
+    max-height: 80vh;
+    overflow-y: scroll;
+  }

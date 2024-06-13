@@ -8,7 +8,7 @@ import {toast} from 'react-toastify'
 
 
 
-export const UploadProduct = ({ onClose }) => {
+export const UploadProduct = ({ onClose, fetchData }) => {
   const [data, setData] = useState({
     productName: "",
     brandName: "",
@@ -76,6 +76,7 @@ export const UploadProduct = ({ onClose }) => {
     if(responseData.success){
       toast.success(responseData?.message)
       onClose()
+      fetchData()
     }
 
     if(responseData.error){
