@@ -38,7 +38,7 @@ function Products() {
       </div>
 
 
-      <div className="d-flex gap-3 align-items-center  flex-wrap all-product-box">
+      <div className="d-flex gap-3 align-items-center  flex-wrap all-product-box m-3">
         {
           allProduct.map((product,index)=> {
             return(

@@ -56,3 +56,9 @@
     max-height: 80vh;
     overflow-y: scroll;
   }
+
+  .admin-product-card{
+    width: 200px;
+    height: 300px;
+    box-shadow: 0px 0px 9px rgb(227, 226, 226);
+  }
