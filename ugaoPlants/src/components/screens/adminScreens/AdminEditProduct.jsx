@@ -6,17 +6,17 @@ import DisplayImage from "./DisplayImage";
 import SummaryApi from "../../../common/Index";
 import {toast} from 'react-toastify'
 
-
-
-export const UploadProduct = ({ onClose }) => {
+const AdminEditProduct = (
+  {onClose, productData,fetchdata}) => {
   const [data, setData] = useState({
-    productName: "",
-    brandName: "",
-    category: "",
-    productImage: [],
-    description: "",
-    price: "",
-    sellingPrice: "",
+    ...productData,
+    productName: productData?.productName,
+    brandName: productData?.brandName,
+    category: productData?.category, 
+    productImage: productData?.productImage || [], 
+    description: productData?.description,
+    price: productData?.price,
+    sellingPrice: productData?.sellingPrice,
   });
 
   const [openFullScreenImage, setOpenFullScreenImage] = useState(false);
@@ -63,8 +63,8 @@ export const UploadProduct = ({ onClose }) => {
   const handleSubmit = async (e)=> {
     e.preventDefault()
     
-    const response = await fetch(SummaryApi.uploadProduct.url,{
-      method : SummaryApi.uploadProduct.method,
+    const response = await fetch(SummaryApi.updateProduct.url,{
+      method : SummaryApi.updateProduct.method,
       credentials : 'include',
       headers : {
         "content-type" : "application/json"
@@ -76,19 +76,18 @@ export const UploadProduct = ({ onClose }) => {
     if(responseData.success){
       toast.success(responseData?.message)
       onClose()
+      fetchdata()
     }
 
     if(responseData.error){
       toast.error(responseData?.message)
     }
-  }
-
-
+  } 
   return (
     <div className="position-fixed   uploadopacity top-0 start-0 bottom-0 end-0 d-flex justify-content-center align-items-center ">
       <div className=" p-3 rounded uplaod-product">
         <div className=" d-flex justify-content-between">
-          <h3 className="fw-bold ">Upload Product</h3>
+          <h3 className="fw-bold ">Edit Product</h3>
           <i
             className="fa-solid fa-xmark fs-3 pointerClass"
             onClick={onClose}
@@ -233,7 +232,7 @@ export const UploadProduct = ({ onClose }) => {
             className="p-2 m-2 rounded-3 bg-light border border-light "
           />
 
-          <button className="btn btn-success ms-2">Uplaad Product</button>
+          <button className="btn btn-success ms-2">update Product</button>
         </form>
       </div>
 
@@ -248,3 +247,5 @@ export const UploadProduct = ({ onClose }) => {
     </div>
   );
 };
+
+export default AdminEditProduct;
