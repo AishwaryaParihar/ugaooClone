@@ -108,7 +108,7 @@ function Nav() {
                       <li>
                         <a className="dropdown-item dropdown-item01 " href="#">
                           <span className="hover-line nav-font">
-                            Plant Action
+                            Plants Action
                           </span>
                         </a>
                       </li>
