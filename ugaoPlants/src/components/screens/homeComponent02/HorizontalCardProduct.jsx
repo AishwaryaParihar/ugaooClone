@@ -22,7 +22,7 @@ const HorizontalCardProduct = ({ category, heading }) => {
     return (
         <div className="container-fluid p-5">
             <div className="heading">
-                <h2>{heading}</h2>
+                <h2> {heading}</h2>
             </div>
             <div className="row">
                 {loading ? (
@@ -52,7 +52,7 @@ const HorizontalCardProduct = ({ category, heading }) => {
                                             sale
                                         </Badge>
                                     </div>
-                                    <Card.Body className="p-0 m-0">
+                                    <Card.Body className="p-2 m-0">
                                         <Card.Title>{product.productName}</Card.Title>
                                         <div className="bestProductName pt-2 pb-3"></div>
                                         <div className="star-rating">
