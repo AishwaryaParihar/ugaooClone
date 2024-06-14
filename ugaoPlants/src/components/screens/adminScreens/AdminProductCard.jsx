@@ -6,8 +6,8 @@ const AdminProductCard = ({ data, fetchdata }) => {
   const [editProduct, setEditProduct] = useState(false);
 
   return (
-    <div className="admin-product-card bg-light p-2">
-      <div className="text-center position-relative">
+    <div className="admin-product-card  bg-light p-2">
+      <div className="text-center">
         <img
           className="adminProductCardImage"
           src={data?.productImage[0]}
@@ -15,8 +15,8 @@ const AdminProductCard = ({ data, fetchdata }) => {
           height={150}
           alt=""
         />
-        <h6 className="mt-1">{data?.productName}</h6>
-        <div>
+        <h6 className="mt-1 adminProductHeading">{data?.productName}</h6>
+        <div className="">
           <p className="fw-bold">
             {
               displayINRCurrency(data.sellingPrice)
@@ -24,8 +24,8 @@ const AdminProductCard = ({ data, fetchdata }) => {
             }
           
           </p>
-          <div className="position-fixed-bottom" onClick={() => setEditProduct(true)}>
-            <i class="fa-solid fa-pen bg-success px-5 p-2 rounded text-white  "></i>
+          <div className="editAdminButton text-end" >
+            <i class="fa-solid fa-pen bg-success p-2  rounded-circle text-white pointerClass" onClick={() => setEditProduct(true)}></i>
           </div>
         </div>
       </div>

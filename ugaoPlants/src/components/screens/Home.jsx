@@ -1,33 +1,36 @@
-import React from 'react'
-import Hero from './homeComponents/Hero'
-import Offers from './homeComponents/Offers'
-import Bestseller from './homeComponents/Bestseller'
-import Shopthelook from './homeComponents/Shopthelook.jsx'
-import DealOfTheWee from './homeComponents/DealOfTheWee.jsx'
-import WhyUgao from './homeComponents/WhyUgao.jsx'
-import Youtube from './homeComponents/Youtube.jsx'
-import Bestpick from './homeComponents/Bestpick.jsx'
+import React from "react";
+import Hero from "./homeComponents/Hero";
+import Offers from "./homeComponents/Offers";
+import Bestseller from "./homeComponents/Bestseller";
+import Shopthelook from "./homeComponents/Shopthelook.jsx";
+import DealOfTheWee from "./homeComponents/DealOfTheWee.jsx";
+import WhyUgao from "./homeComponents/WhyUgao.jsx";
+import Youtube from "./homeComponents/Youtube.jsx";
+import Bestpick from "./homeComponents/Bestpick.jsx";
 // import Review from './homeComponents/Review.jsx'
-import PlantSubscription from './homeComponents/PlantSubscription.jsx'
-import About from './homeComponents/About.jsx'
+import PlantSubscription from "./homeComponents/PlantSubscription.jsx";
+import About from "./homeComponents/About.jsx";
+import CategoryList from "./homeComponent02/CategoryList.jsx";
+import HorizontalCardProduct from "./homeComponent02/HorizontalCardProduct.jsx";
 // import DealOfTheWeek from './homeComponents/DealOfTheWee.jsx'
 
 function Home() {
   return (
     <div>
-      <Hero/>
+      <Hero />
       {/* <Offers></Offers> */}
-      <Bestpick/>
+      <Bestpick />
+      <CategoryList/>
+      <HorizontalCardProduct category={"plants"} heading={"BestSeller"} />
       <Bestseller></Bestseller>
+
       <Shopthelook></Shopthelook>
-      <DealOfTheWee/>
+      <DealOfTheWee />
       <WhyUgao></WhyUgao>
-<Youtube/>
-<PlantSubscription/>
-{/* <Review></Review> */}
-<About/>
-
-
+      <Youtube />
+      <PlantSubscription />
+      {/* <Review></Review> */}
+      <About />
     </div>
   );
 }

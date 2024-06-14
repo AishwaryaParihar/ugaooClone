@@ -21,6 +21,8 @@ import UserProvider from "./components/providers/user-provider";
 import Products from "./components/screens/adminScreens/Products";
 import Settings from "./components/screens/adminScreens/Settings"
 import ActivityLog from "./components/screens/adminScreens/ActivityLog";
+import CategoryProduct from "./components/screens/homeComponent02/CategoryProduct";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -62,6 +64,9 @@ function App() {
               <Route path="/seeds" element={<SeedsHero />} />
               <Route path="/signin" element={<SignIn />} />
               <Route path="/signup" element={<SignUp />} />
+              <Route path="/product-category/:categoryName" element={<CategoryProduct />} />
+
+
             </Route>
             <Route path="/admin-panel" element={<Adminpanel />}>
               <Route  path="alluser" element={<AllUsers />}></Route>

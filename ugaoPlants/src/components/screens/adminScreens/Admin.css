@@ -55,10 +55,26 @@
   .all-product-box{
     max-height: 80vh;
     overflow-y: scroll;
+    
+  }
+  .scrollbar-none::-webkit-scrollbar{
+    display: none;
   }
 
   .admin-product-card{
     width: 200px;
-    height: 300px;
+    height: 278px;
     box-shadow: 0px 0px 9px rgb(227, 226, 226);
+  }
+  
+  .editAdminButton{
+
+  }
+
+  .adminProductHeading{
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
