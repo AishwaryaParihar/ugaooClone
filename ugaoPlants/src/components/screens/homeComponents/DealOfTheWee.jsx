@@ -29,13 +29,13 @@ function DealOfTheWeek() {
   ];
 
   const colorToImageMap = {
-    "Ivory": [ivory, slide1, slide2, slide3, slide4],
-    "White": [white, slide2, slide3, slide4],
-    "Red": [red, slide1, slide2, slide3, slide4],
-    "Green": [green, slide2, slide3],
-    "Brown": [brown, slide1, slide3],
-    "Yellow": [yellow, slide2, slide3],
-    "Bisque": [spiroyellow, slide1, slide2],
+    Ivory: [ivory, slide1, slide2, slide3, slide4],
+    White: [white, slide2, slide3, slide4],
+    Red: [red, slide1, slide2, slide3, slide4],
+    Green: [green, slide2, slide3],
+    Brown: [brown, slide1, slide3],
+    Yellow: [yellow, slide2, slide3],
+    Bisque: [spiroyellow, slide1, slide2],
   };
 
   const handlePlanterChange = (planter) => {

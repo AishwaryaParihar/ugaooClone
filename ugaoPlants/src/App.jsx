@@ -9,7 +9,7 @@ import Home from "./components/screens/Home";
 import SignIn from "./components/screens/SignIn";
 import SeedsHero from "./components/screens/SeedsComponents/SeedsHero";
 import SignUp from "./components/screens/SignUp";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import SummaryApi from "./common/Index";
 import Context from "./context";
 import { useDispatch } from "react-redux";
@@ -22,10 +22,13 @@ import Products from "./components/screens/adminScreens/Products";
 import Settings from "./components/screens/adminScreens/Settings"
 import ActivityLog from "./components/screens/adminScreens/ActivityLog";
 import CategoryProduct from "./components/screens/homeComponent02/CategoryProduct";
+import ProductDetails from "./components/screens/homeComponent02/ProductDetails";
+import Cart from "./components/screens/homeComponent02/Cart";
 
 
 function App() {
   const dispatch = useDispatch();
+  const [cartProductCount, setCartProductCount]=useState(0)
   const fetchUserDetails = async () => {
     const dataResponse = await fetch(SummaryApi.current_user.url, {
       method: SummaryApi.current_user.method,
@@ -40,18 +43,31 @@ function App() {
 
    
   };
+  const fetchUserAddtoCart = async ()=>{
+    const dataResponse =await  fetch(SummaryApi.addToCartProductCount.url, {
+      method: SummaryApi.addToCartProductCount.method,
+      credentials: "include",
+    });
+
+    const dataApi = await dataResponse.json();
+   setCartProductCount(dataApi?.data?.count)
+  }
   useEffect(() => {
     // user details
     fetchUserDetails();
+    fetchUserAddtoCart();
   }, []);
   return (
     <>
       <Context.Provider
         value={{
-          fetchUserDetails, //user detail fetch
+          fetchUserDetails,//user detail fetch
+          cartProductCount, //current use add to cartproduct count
+          fetchUserAddtoCart
         }}
       >
-        <ToastContainer />
+        <ToastContainer 
+        position="top-center"/>
 
         {/* <header>
           <Nav />
@@ -61,10 +77,12 @@ function App() {
           <Routes>
             <Route path="/" element={<UserProvider />}>
               <Route path="/" element={<Home />} />
-              <Route path="/seeds" element={<SeedsHero />} />
+              {/* <Route path="/seeds" element={<SeedsHero />} /> */}
+              <Route path="/product/:id" element={<ProductDetails />} />
               <Route path="/signin" element={<SignIn />} />
               <Route path="/signup" element={<SignUp />} />
               <Route path="/product-category/:categoryName" element={<CategoryProduct />} />
+              <Route path="/cart" element={<Cart/>} />
 
 
             </Route>

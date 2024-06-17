@@ -2,21 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import fetchCategoryWiseProduct from "../../../helper/fetchCategoryWiseProduct";
 import { Card, Button, Badge } from "react-bootstrap"; // Assuming you're using react-bootstrap for UI components
 import { Link } from "react-router-dom";
+import addToCart from "../../../helper/addToCart";
 import Context from "../../../context";
-import addToCart from "../../../helper/addToCart"; 
 
-
-const HorizontalCardProduct = ({ category, heading }) => {
+const CategoryWiseProductDisplay = ({ category, heading }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
-
-  const {fetchUserAddtoCart} = useContext(Context)
-  const handleAddToCart = async(e,id)=>{
-    await addToCart(e,id)
-    fetchUserAddtoCart()
- }
-
-
 
   const fetchData = async () => {
     setLoading(true);
@@ -29,7 +20,14 @@ const HorizontalCardProduct = ({ category, heading }) => {
     fetchData();
   }, [category]);
 
-  const loadingList = new Array(4).fill(null); // Limit to 4 placeholders for loading state
+  const loadingList = new Array(4).fill(null);
+   // Limit to 4 placeholders for loading state
+  const {fetchUserAddtoCart} = useContext(Context)
+
+  const handleAddToCart = async (e, id) => {
+    await addToCart(e,id);
+    fetchUserAddtoCart();
+  };
 
   return (
     <div className="container-fluid p-5">
@@ -93,7 +91,7 @@ const HorizontalCardProduct = ({ category, heading }) => {
                         <i className="fa-solid fa-indian-rupee-sign point12px"></i>
                         {product.sellingPrice}
                       </p>
-                      <Button className="w-100 btn btn-success rounded-0 text-uppercase" onClick={(e)=>handleAddToCart(e,product?._id)}>
+                      <Button className="w-100 btn btn-success rounded-0 text-uppercase" onClick={(e)=>handleAddToCart(e, product?._id)}>
                         View Product
                       </Button>
                     </Card.Body>
@@ -101,14 +99,10 @@ const HorizontalCardProduct = ({ category, heading }) => {
                 </Card>
               </div>
             ))}
-        <div className="viewall my-5 d-flex justify-content-center">
-          <Button className="px-5 btn btn-success rounded-0 text-uppercase rounded-1">
-            View All
-          </Button>
-        </div>
+       
       </div>
     </div>
   );
 };
 
-export default HorizontalCardProduct;
+export default CategoryWiseProductDisplay;

@@ -1,18 +1,23 @@
-import React, { useState } from "react";
+// Nav.js
+import React, { useContext, useState } from "react";
 import logo from "../../assets/greenlogo.png";
 import "./nav.css";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux"; // for backend
+import { useDispatch, useSelector } from "react-redux";
 import SummaryApi from "../../common/Index";
 import { toast } from "react-toastify";
 import { setUserDetails } from "../../store/userSlice";
 import ROLE from "../../common/Role";
+import Context from "../../context";
+import Cart from "../screens/homeComponent02/Cart"; // Import the Cart component
 
 function Nav() {
   // for backend
   const user = useSelector((state) => state?.user?.user);
   const dispatch = useDispatch();
   const [menuDisplay, setMenuDisplay] = useState(false);
+  const context = useContext(Context);
+  const [showCart, setShowCart] = useState(false); // State for cart offcanvas
 
   const handleLogout = async () => {
     const fetchData = await fetch(SummaryApi.logout_user.url, {
@@ -31,7 +36,10 @@ function Nav() {
     }
   };
 
-  // for backend
+  const toggleCartOffcanvas = () => {
+    setShowCart(!showCart);
+  };
+
   return (
     <div>
       <section>
@@ -56,16 +64,21 @@ function Nav() {
                     className="border-0 bg-transparent"
                     onClick={handleLogout}
                   >
-                    <i className="fa-solid  fa-circle-left fa-lg pt-3 px-2  text-success border-0"></i>
+                    <i className="fa-solid fa-circle-left fa-lg pt-3 px-2 text-success border-0"></i>
                   </button>
                 ) : (
                   <Link to="/signin">
-                    {" "}
-                    <i className="fa-solid fa-right-to-bracket pt-3 px-2  text-success"></i>
+                    <i className="fa-solid fa-right-to-bracket pt-3 px-2 text-success"></i>
                   </Link>
                 )}
               </span>
-              <i className="fa-solid fa-cart-shopping p-3 text-success"></i>
+              <Link to="#" onClick={toggleCartOffcanvas}>
+                      <i className="fa-solid fa-cart-shopping pt-3 px-2 text-success">
+                        <sup className="text-white rounded-circle fw-bold bg-success px-2 py-1">
+                          {context?.cartProductCount}
+                        </sup>
+                      </i>
+                    </Link>
               <Link>
                 <i className="fa-regular fa-user text-success pt-3 px-2"></i>
               </Link>
@@ -100,16 +113,12 @@ function Nav() {
                     <ul className="dropdown-menu dropdown-menu01 dropdown-item01">
                       <li>
                         <a className="dropdown-item dropdown-item01 " href="#">
-                          <span className="hover-line nav-font">
-                            Plant Action
-                          </span>
+                          <span className="hover-line nav-font">Plant Action</span>
                         </a>
                       </li>
                       <li>
                         <a className="dropdown-item dropdown-item01 " href="#">
-                          <span className="hover-line nav-font">
-                            Plants Action
-                          </span>
+                          <span className="hover-line nav-font">Plants Action</span>
                         </a>
                       </li>
                     </ul>
@@ -121,16 +130,12 @@ function Nav() {
                     <ul className="dropdown-menu dropdown-menu01 dropdown-item01">
                       <li>
                         <a className="dropdown-item dropdown-item01 " href="#">
-                          <span className="hover-line nav-font">
-                            Plant Action
-                          </span>
+                          <span className="hover-line nav-font">Plant Action</span>
                         </a>
                       </li>
                       <li>
                         <a className="dropdown-item dropdown-item01 " href="#">
-                          <span className="hover-line nav-font">
-                            Plant Action
-                          </span>
+                          <span className="hover-line nav-font">Plant Action</span>
                         </a>
                       </li>
                     </ul>
@@ -142,16 +147,12 @@ function Nav() {
                     <ul className="dropdown-menu dropdown-menu01 dropdown-item01">
                       <li>
                         <a className="dropdown-item dropdown-item01 " href="#">
-                          <span className="hover-line nav-font">
-                            Plant Action
-                          </span>
+                          <span className="hover-line nav-font">Plant Action</span>
                         </a>
                       </li>
                       <li>
                         <a className="dropdown-item dropdown-item01 " href="#">
-                          <span className="hover-line nav-font">
-                            Plant Action
-                          </span>
+                          <span className="hover-line nav-font">Plant Action</span>
                         </a>
                       </li>
                     </ul>
@@ -163,16 +164,12 @@ function Nav() {
                     <ul className="dropdown-menu dropdown-menu01 dropdown-item01">
                       <li>
                         <a className="dropdown-item dropdown-item01 " href="#">
-                          <span className="hover-line nav-font">
-                            Plant Action
-                          </span>
+                          <span className="hover-line nav-font">Plant Action</span>
                         </a>
                       </li>
                       <li>
                         <a className="dropdown-item dropdown-item01 " href="#">
-                          <span className="hover-line nav-font">
-                            Plant Action
-                          </span>
+                          <span className="hover-line nav-font">Plant Action</span>
                         </a>
                       </li>
                     </ul>
@@ -184,16 +181,12 @@ function Nav() {
                     <ul className="dropdown-menu dropdown-menu01 dropdown-item01">
                       <li>
                         <a className="dropdown-item dropdown-item01 " href="#">
-                          <span className="hover-line nav-font">
-                            Plant Action
-                          </span>
+                          <span className="hover-line nav-font">Plant Action</span>
                         </a>
                       </li>
                       <li>
                         <a className="dropdown-item dropdown-item01 " href="#">
-                          <span className="hover-line nav-font">
-                            Plant Action
-                          </span>
+                          <span className="hover-line nav-font">Plant Action</span>
                         </a>
                       </li>
                     </ul>
@@ -225,29 +218,29 @@ function Nav() {
                 </form>
                 <div className="flex-nowrap d-none d-md-block">
                   <i className="fa-solid fa-indian-rupee-sign px-2 py-1 ms-4 border border-success rounded-circle text-success"></i>
-
                   <span>
                     {user?._id ? (
                       <button
                         className="border-0 bg-transparent"
                         onClick={handleLogout}
                       >
-                        <i className="fa-solid  fa-circle-left fa-lg pt-3 px-2  text-success border-0"></i>
+                        <i className="fa-solid fa-circle-left fa-lg pt-3 px-2 text-success border-0"></i>
                       </button>
                     ) : (
                       <Link to="/signin">
-                        {" "}
-                        <i className="fa-solid fa-right-to-bracket pt-3 px-2  text-success"></i>
+                        <i className="fa-solid fa-right-to-bracket pt-3 px-2 text-success"></i>
                       </Link>
                     )}
                   </span>
-
-                  {/* // for backend  */}
-
-                  <Link to="/">
-                    <i className="fa-solid fa-cart-shopping pt-3 px-2  text-success"></i>
-                  </Link>
-
+                  {user?._id && (
+                    <Link to="#" onClick={toggleCartOffcanvas}>
+                      <i className="fa-solid fa-cart-shopping pt-3 px-2 text-success">
+                        <sup className="text-white rounded-circle fw-bold bg-success px-2 py-1">
+                          {context?.cartProductCount}
+                        </sup>
+                      </i>
+                    </Link>
+                  )}
                   <span className="position-relative group">
                     {user?._id && (
                       <span
@@ -258,21 +251,18 @@ function Nav() {
                         <Link>
                           <i className="fa-regular fa-user text-success pt-3 px-2"></i>
                         </Link>
-                      </span> 
+                      </span>
                     )}
-
                     {menuDisplay && (
                       <span className="popUPtext">
                         {user?.role === ROLE.ADMIN && (
                           <Link
-
                             to="/admin-panel/products"
                             className="text-decoration-none text-dark "
                             onClick={() => {
                               setMenuDisplay((preve) => !preve);
                             }}
                           >
-                            {" "}
                             Admin Panel
                           </Link>
                         )}
@@ -286,7 +276,7 @@ function Nav() {
           <form action="" className="d-block d-lg-none w-100 mx-4">
             <div className="search-box w-100 mt-2  d-flex flex-nowrap border border-dark rounded-5">
               <input
-                className="form-control  border-0  p-2 px-3 rounded-5 input-text  "
+                className="form-control  border-0  p-2 px-3 rounded-5 input-text"
                 type="search"
                 placeholder="Search for plants, seeds and planters..."
                 aria-label="Search"
@@ -296,6 +286,7 @@ function Nav() {
           </form>
         </nav>
       </section>
+      <Cart show={showCart} toggleOffcanvas={toggleCartOffcanvas} context={context} />
     </div>
   );
 }
