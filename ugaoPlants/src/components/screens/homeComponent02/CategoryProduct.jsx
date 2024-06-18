@@ -95,23 +95,23 @@ const CategoryProduct = () => {
     },[sortBy])
     
   return (
-    <div className='container mx-auto p-4'>
+    <div className='container-fluid'>
 
        {/***desktop version */}
-       <div className='hidden lg:grid grid-cols-[200px,1fr]'>
+       <div className='row'>
            {/***left side */}
-           <div className='bg-white p-2 min-h-[calc(100vh-120px)] overflow-y-scroll'>
+           <div className='bg-white col-md-2'>
                 {/**sort by */}
                 <div className=''>
-                    <h3 className='text-base uppercase font-medium text-slate-500 border-b pb-1 border-slate-300'>Sort by</h3>
+                    <h3 className=''>Sort by</h3>
 
-                    <form className='text-sm flex flex-col gap-2 py-2'>
-                        <div className='flex items-center gap-3'>
+                    <form className=''>
+                        <div className='d-flex align-items-center gap-3'>
                           <input type='radio' name='sortBy' checked={sortBy === 'asc'} onChange={handleOnChangeSortBy} value={"asc"}/>
                           <label>Price - Low to High</label>
                         </div>
 
-                        <div className='flex items-center gap-3'>
+                        <div className='d-flex align-items-center gap-3'>
                           <input type='radio' name='sortBy' checked={sortBy === 'dsc'} onChange={handleOnChangeSortBy} value={"dsc"}/>
                           <label>Price - High to Low</label>
                         </div>
@@ -121,9 +121,9 @@ const CategoryProduct = () => {
 
                 {/**filter by */}
                 <div className=''>
-                    <h3 className='text-base uppercase font-medium text-slate-500 border-b pb-1 border-slate-300'>Category</h3>
+                    <h3 className=''>Category</h3>
 
-                    <form className='text-sm flex flex-col gap-2 py-2'>
+                    <form className=''>
                         {
                           productCategory.map((categoryName,index)=>{
                             return(
@@ -142,17 +142,17 @@ const CategoryProduct = () => {
 
 
             {/***right side ( product ) */}
-            <div className='px-4'>
-              <p className='font-medium text-slate-800 text-lg my-2'>Search Results : {data.length}</p>
+            <div className=' col-md-10'>
+              <div className=''>Search Results : {data.length}</div>
 
-             <div className='min-h-[calc(100vh-120px)] overflow-y-scroll max-h-[calc(100vh-120px)]'>
+             <div className=''>
               {
                   data.length !== 0 && !loading && (
                     <VerticalCard data={data} loading={loading}/>
                   )
               }
              </div>
-            </div>
+         </div>
        </div>
        
     </div>
