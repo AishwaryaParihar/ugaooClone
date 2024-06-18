@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import SummaryApi from "../../../common/Index";
-import SeedsHero from "../SeedsComponents/SeedsHero";
+// import SeedsHero from "../SeedsComponents/SeedsHero";
 import { Badge } from "react-bootstrap";
 import "./productDetails.css";
 import displayINRCurrency from "../../../helper/displayCurrency";
@@ -14,7 +14,7 @@ import FAQ from "./FAQ";
 import CategoryWiseProductDisplay from "./CategoryWiseProductDisplay";
 import addToCart from "../../../helper/addToCart";
 
-// import Context from '../context';
+import Context from '../../../context/index';
 
 const ProductDetails = () => {
   const [data, setData] = useState({

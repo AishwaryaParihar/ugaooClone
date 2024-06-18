@@ -8,9 +8,11 @@ import addToCart from "../../../helper/addToCart";
 
 const HorizontalCardProduct = ({ category, heading }) => {
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const loadingList = new Array(4).fill(null);
 
   const {fetchUserAddtoCart} = useContext(Context)
+
   const handleAddToCart = async(e,id)=>{
     await addToCart(e,id)
     fetchUserAddtoCart()
@@ -27,9 +29,9 @@ const HorizontalCardProduct = ({ category, heading }) => {
 
   useEffect(() => {
     fetchData();
-  }, [category]);
+  }, []);
 
-  const loadingList = new Array(4).fill(null); // Limit to 4 placeholders for loading state
+  // Limit to 4 placeholders for loading state
 
   return (
     <div className="container-fluid p-5">
