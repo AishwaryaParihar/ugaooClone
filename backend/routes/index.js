@@ -21,6 +21,9 @@ const countAddToCartProduct = require("../controller/user/countAddToCartProduct"
 const addToCartViewProduct = require("../controller/user/addToCartViewProduct");
 const updateAddToCartProduct = require("../controller/user/updateAddToCartProduct");
 const deleteAddToCartProduct = require("../controller/user/deleteAddToCartProduct");
+const filterProductController = require("../controller/product/filterProduct");
+const searchProduct = require('../controller/product/searchProduct')
+
 router.post("/signup", userSignUpController);
 router.post("/signin", userSignInController);
 router.get("/user-details", authToken, userDetailsController);
@@ -39,6 +42,8 @@ router.post("/update-product", authToken ,updateProductController)
 router.get("/get-categoryProduct", getCategoryProduct)
 router.post("/category-product",getCategoryWiseProductc)
 router.post("/product-details",getProductDetails)
+router.post("/filter-product",filterProductController)
+router.get("/search",searchProduct)
 
 
 // use add to cart 
@@ -47,6 +52,7 @@ router.get("/countAddToCartProduct",authToken,countAddToCartProduct)
 router.get("/view-card-product", authToken, addToCartViewProduct)
 router.post("/update-cart-product",authToken , updateAddToCartProduct )
 router.post("/delete-cart-product",authToken , deleteAddToCartProduct)
+
 
 
 

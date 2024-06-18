@@ -24,6 +24,7 @@ import ActivityLog from "./components/screens/adminScreens/ActivityLog";
 import CategoryProduct from "./components/screens/homeComponent02/CategoryProduct";
 import ProductDetails from "./components/screens/homeComponent02/ProductDetails";
 import Cart from "./components/screens/homeComponent02/Cart";
+import SearchProduct from "./components/screens/homeComponent02/SearchProduct";
 
 
 function App() {
@@ -81,8 +82,9 @@ function App() {
               <Route path="/product/:id" element={<ProductDetails />} />
               <Route path="/signin" element={<SignIn />} />
               <Route path="/signup" element={<SignUp />} />
-              <Route path="/product-category/:categoryName" element={<CategoryProduct />} />
+              <Route path="/product-category" element={<CategoryProduct />} />
               <Route path="/cart" element={<Cart/>} />
+              <Route path="/search" element={<SearchProduct/>} />
 
 
             </Route>

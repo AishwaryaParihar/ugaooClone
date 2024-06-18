@@ -32,7 +32,7 @@ const CategoryList = () => {
           categoryProduct
             .map((product, index) => (
               <div key={index} className="col-6 col-md-3">
-                <Link to={"/product-category/"+product?.category} className="textdecor h5">
+                <Link to={"/product-category?category="+product?.category} className="textdecor h5">
                   <div className="bestimg">
                     <img
                       src={product?.productImage[0]}

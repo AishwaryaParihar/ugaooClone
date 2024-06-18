@@ -132,9 +132,9 @@ const Cart = ({ show, toggleOffcanvas, context }) => {
 
           <div className="">
             {loading
-              ? loadingCart.map((el) => {
+              ? loadingCart.map((el, index) => {
                   return (
-                    <div key={el + "Add to cart loading"}>loading....</div>
+                    <div key={el + "Add to cart loading"+index}>loading....</div>
                   );
                 })
               : data.map((product, index) => {

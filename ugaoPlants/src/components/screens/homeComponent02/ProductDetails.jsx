@@ -39,7 +39,7 @@ const ProductDetails = () => {
 
   // const [zoomImage, setZoomImage] = useState(false);
 
-  // const { fetchUserAddToCart } = useContext(Context)
+  const { fetchUserAddToCart } = useContext(Context)
 
   const navigate = useNavigate();
 
@@ -96,11 +96,11 @@ const ProductDetails = () => {
     fetchUserAddToCart()
  }
 
-  // const handleBuyProduct = async (e, id) => {
-  //   await addToCart(e, id);
-  //   fetchUserAddToCart();
-  //   navigate("/cart");
-  // };
+  const handleBuyProduct = async (e, id) => {
+    await addToCart(e, id);
+    fetchUserAddToCart();
+    navigate("/cart");
+  };
 
   return (
     <>
@@ -120,7 +120,7 @@ const ProductDetails = () => {
               {loading ? (
                 <div className="">
                   {productImageListLoading.map((el, index) => (
-                    <div className="" key={index}>
+                    <div className="" key={+index}>
                       loading...
                     </div>
                   ))}
@@ -206,6 +206,7 @@ const ProductDetails = () => {
               <button
                 type="button"
                 className="btn border border-success text-success text-uppercase buy-it"
+                onClick={(e)=>handleBuyProduct(e,data?._id)}
               >
                 buy it now
               </button>

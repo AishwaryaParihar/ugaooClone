@@ -4,6 +4,7 @@ import { Card, Button, Badge } from "react-bootstrap"; // Assuming you're using 
 import { Link } from "react-router-dom";
 import addToCart from "../../../helper/addToCart";
 import Context from "../../../context";
+import scrollTop from "../../../helper/scrollTop";
 
 const CategoryWiseProductDisplay = ({ category, heading }) => {
   const [data, setData] = useState([]);
@@ -54,7 +55,7 @@ const CategoryWiseProductDisplay = ({ category, heading }) => {
             data.slice(0, 4).map((product, index) => (
               <div key={index} className="col-6 col-md-3">
                 <Card className="border-0">
-                  <Link to={"product/" + product?._id} className="nolink">
+                  <Link to={"/product/" + product?._id} className="nolink" onClick={()=>scrollTop()}>
                     <div className="textdecor position-relative">
                       <img
                         src={product.productImage[0]}

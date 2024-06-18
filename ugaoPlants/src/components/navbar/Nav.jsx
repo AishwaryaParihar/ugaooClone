@@ -2,7 +2,7 @@
 import React, { useContext, useState } from "react";
 import logo from "../../assets/greenlogo.png";
 import "./nav.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import SummaryApi from "../../common/Index";
 import { toast } from "react-toastify";
@@ -18,6 +18,12 @@ function Nav() {
   const [menuDisplay, setMenuDisplay] = useState(false);
   const context = useContext(Context);
   const [showCart, setShowCart] = useState(false); // State for cart offcanvas
+  const navigate = useNavigate()
+  const searchInput = useLocation()
+  const URLSearch = new URLSearchParams(searchInput?.search)
+  const searchQuery = URLSearch.getAll("q")
+  const [search,setSearch] = useState(searchQuery)
+
 
   const handleLogout = async () => {
     const fetchData = await fetch(SummaryApi.logout_user.url, {
@@ -30,6 +36,8 @@ function Nav() {
     if (data.success) {
       toast.success(data.message);
       dispatch(setUserDetails(null));
+      navigate("/")
+
     }
     if (data.error) {
       toast.error(data.message);
@@ -39,7 +47,16 @@ function Nav() {
   const toggleCartOffcanvas = () => {
     setShowCart(!showCart);
   };
+  const handleSearch = (e)=>{
+    const { value } = e.target
+    setSearch(value)
 
+    if(value){
+      navigate(`/search?q=${value}`)
+    }else{
+      navigate("/search")
+    }
+  }
   return (
     <div>
       <section>
@@ -208,6 +225,8 @@ function Nav() {
                 <form className="  w-25 d-none d-md-block" role="search">
                   <div className="search-box w-100 mt-2  d-flex flex-nowrap border border-dark rounded-5">
                     <input
+                     onChange={handleSearch}
+                     value={search}
                       className="form-control  border-0  p-2 px-3 rounded-5 input-text  "
                       type="search"
                       placeholder="Search for plants, seeds and planters..."
