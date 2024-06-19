@@ -11,7 +11,9 @@ const authToken = require("../middleware/authToken");
 
 const allUsers = require("../controller/user/allusers");
 const updateUser = require("../controller/user/updateUser");
-const getProductDetails = require("../controller/product/getProductDetails.js");
+const getProductDetails = require("../controller/product/getProductDetails");
+
+
 const getProductController = require("../controller/product/getProduct");
 const updateProductController = require("../controller/product/updateProduct");
 const getCategoryProduct = require("../controller/product/getCategoryProductOne");
