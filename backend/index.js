@@ -15,6 +15,10 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 
+app.get("/test", (req, res)=> {
+  return res.send("Server Running")
+})
+
 app.use("/api", router);
 
 const PORT = 8081 || process.env.PORT;
