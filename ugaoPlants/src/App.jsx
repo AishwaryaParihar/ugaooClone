@@ -7,7 +7,7 @@ import Footer from "./components/footer/Footer";
 import Nav from "./components/navbar/Nav";
 import Home from "./components/screens/Home";
 import SignIn from "./components/screens/SignIn";
-import SeedsHero from "./components/screens/SeedsComponents/SeedsHero";
+import SeedsHero from "./components/screens/homeComponent02/SeedsHero";
 import SignUp from "./components/screens/SignUp";
 import { useEffect, useState } from "react";
 import SummaryApi from "./common/Index";
@@ -78,7 +78,7 @@ function App() {
           <Routes>
             <Route path="/" element={<UserProvider />}>
               <Route path="/" element={<Home />} />
-              {/* <Route path="/seeds" element={<SeedsHero />} /> */}
+              <Route path="/seeds" element={<SeedsHero />} />
               <Route path="/product/:id" element={<ProductDetails />} />
               <Route path="/signin" element={<SignIn />} />
               <Route path="/signup" element={<SignUp />} />

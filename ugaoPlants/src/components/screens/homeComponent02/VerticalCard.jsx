@@ -1,65 +1,86 @@
-import React, { useContext } from 'react'
-// import scrollTop from '../helpers/scrollTop'
-import displayINRCurrency from '../../../helper/displayCurrency'
-import addToCart from '../../../helper/addToCart'
-import { Link } from 'react-router-dom'
-import Context from '../../../context'
+import React, { useContext } from 'react';
+import { Card, Badge, Button } from 'react-bootstrap';
+import displayINRCurrency from '../../../helper/displayCurrency';
+import addToCart from '../../../helper/addToCart';
+import { Link } from 'react-router-dom';
+import Context from '../../../context';
 
-const VerticalCard = ({loading,data = []}) => {
-    const loadingList = new Array(13).fill(null)
-    const { fetchUserAddToCart } = useContext(Context)
+const VerticalCard = ({ loading, data = [] }) => {
+    const loadingList = new Array(13).fill(null);
+    const { fetchUserAddToCart } = useContext(Context);
 
-    const handleAddToCart = async(e,id)=>{
-       await addToCart(e,id)
-       fetchUserAddToCart()
-    }
+    const handleAddToCart = async (e, id) => {
+        await addToCart(e, id);
+        fetchUserAddToCart();
+    };
 
-  return (
-    <div className='row'>
-    {
+    return (
+        <div className='row'>
+            {
+                loading ? (
+                    loadingList.map((_, index) => (
+                        <div key={index} className="col-md-4">
+                            <Card className="border-0">
+                                <div className="text-center">
+                                    Loading...
+                                </div>
+                            </Card>
+                        </div>
+                    ))
+                ) : (
+                    data.map((product, index) => (
+                        <div key={index} className=" col-md-4 ">
+                            <Card className="border-0">
+                                <Link to={"product/" + product?._id} className="nolink">
+                                    <div className="textdecor position-relative">
+                                        <img
+                                            src={product?.productImage[0]}
+                                            alt={product?.productName}
+                                            className="img-fluid bextpick"
+                                            // style={{max-height:"360px"}}
+                                        />
+                                        {product?.sale && (
+                                            <Badge
+                                                bg="warning"
+                                                text="dark"
+                                                className="position-absolute rounded-0 text-uppercase p-2 sale-badge"
+                                            >
+                                                Sale
+                                            </Badge>
+                                        )}
+                                    </div>
+                                    <Card.Body className="p-2 m-0">
+                                        <Card.Title>{product?.productName}</Card.Title>
+                                        <div className="bestProductName pt-2 pb-3"></div>
+                                        <div className="star-rating">
+                                            {Array.from({ length: 5 }, (v, i) => (
+                                                <i
+                                                    key={i}
+                                                    className={`fas fa-star text-warning ${product?.rating > i ? "checked" : ""}`}
+                                                />
+                                            ))}
+                                        </div>
+                                        <p className="text-success h6 py-3">
+                                            <del className="text-secondary">
+                                                <i className="fa-solid fa-indian-rupee-sign point12px"></i>
+                                                {displayINRCurrency(product?.price)}
+                                            </del>
+                                            {"  "}From
+                                            <i className="fa-solid fa-indian-rupee-sign point12px"></i>
+                                            {displayINRCurrency(product?.sellingPrice)}
+                                        </p>
+                                        <Button className="w-100 btn btn-success rounded-0 text-uppercase" onClick={(e) => handleAddToCart(e, product?._id)}>
+                                            Add to Cart
+                                        </Button>
+                                    </Card.Body>
+                                </Link>
+                            </Card>
+                        </div>
+                    ))
+                )
+            }
+        </div>
+    );
+};
 
-         loading ? (
-             loadingList.map((product,index)=>{
-                 return(
-                     <div className='w-full min-w-[280px]  md:min-w-[320px] max-w-[280px] md:max-w-[320px]  bg-white rounded-sm shadow '>
-                         <div className='bg-slate-200 h-48 p-4 min-w-[280px] md:min-w-[145px] flex justify-center items-center animate-pulse'>
-                         </div>
-                         <div className='p-4 grid gap-3'>
-                             <h2 className='font-medium text-base md:text-lg text-ellipsis line-clamp-1 text-black p-1 py-2 animate-pulse rounded-full bg-slate-200'></h2>
-                             <p className='capitalize text-slate-500 p-1 animate-pulse rounded-full bg-slate-200  py-2'></p>
-                             <div className='flex gap-3'>
-                                 <p className='text-red-600 font-medium p-1 animate-pulse rounded-full bg-slate-200 w-full  py-2'></p>
-                                 <p className='text-slate-500 line-through p-1 animate-pulse rounded-full bg-slate-200 w-full  py-2'></p>
-                             </div>
-                             <button className='text-sm  text-white px-3  rounded-full bg-slate-200  py-2 animate-pulse'></button>
-                         </div>
-                     </div>
-                 )
-             })
-         ) : (
-             data.map((product,index)=>{
-                 return(
-                     <Link to={"/product/"+product?._id} className='col-md-4'  >
-                         <div className=''>
-                             <img src={product?.productImage[0]} className='img-fluid '/>
-                         </div>
-                         <div className=''>
-                             <h4 className=''>{product?.productName}</h4>
-                             <p className=''>{product?.category}</p>
-                             <div className='d-flex'>
-                                 <p className=''>{ displayINRCurrency(product?.sellingPrice) }</p>
-                                 <p className=''>{ displayINRCurrency(product?.price)  }</p>
-                             </div>
-                             <button className='' onClick={(e)=>handleAddToCart(e,product?._id)}>Add to Cart</button>
-                         </div>
-                     </Link>
-                 )
-             })
-         )
-         
-     }
-    </div>
-  )
-}
-
-export default VerticalCard
+export default VerticalCard;

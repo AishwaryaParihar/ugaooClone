@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { useLocation, useNavigate, Link } from 'react-router-dom'
 import productCategory from '../../../helper/ProductCategory'
 import VerticalCard from '../homeComponent02/VerticalCard'
 import SummaryApi from "../../../common/Index";
+import seedsHero from '../../../assets/summersaleSeeds.webp'
+import Breadcrumb from 'react-bootstrap/Breadcrumb';
+
+
+import SeedsHero from './SeedsHero';
 // import HorizontalCardProduct from './HorizontalCardProduct';
+// import SeedsHero from "./SeedsHero"
 
 
 const CategoryProduct = () => {
@@ -95,8 +101,17 @@ const CategoryProduct = () => {
     },[sortBy])
     
   return (
-    <div className='container-fluid'>
+    <div className='container-fluid px-5 ' >
+    <div className="  mt-1">
+        
+        <Breadcrumb className='pt-5'>
+       <Breadcrumb.Item><Link to="/" className="text-dark ">Home</Link></Breadcrumb.Item>
+       {/* <Breadcrumb.Item active className='text-success'>{category}</Breadcrumb.Item> */}
+     </Breadcrumb>
 
+     <img src={seedsHero} alt="" className='img-fluid w-100 mx-0 my-3 p-0'/>
+       
+     </div>
        {/***desktop version */}
        <div className='row'>
            {/***left side */}
