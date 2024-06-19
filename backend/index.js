@@ -15,8 +15,12 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 
+app.get("/", (req, res)=> {
+  return res.send("SERVER IS RUNNING")
+})
+
 app.get("/test", (req, res)=> {
-  return res.send("Server Running")
+  return res.send("This is test route")
 })
 
 app.use("/api", router);
