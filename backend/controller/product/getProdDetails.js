@@ -1,9 +1,8 @@
-const productModel = require("../../models/productModel");
+const productModel = require("../../models/productModel.js");
 
 const getProductDetails = async (req, res) => {
   try {
     const { productId } = req.body;
-
     const product = await productModel.findById(productId);
     res.json({
       data: product,
